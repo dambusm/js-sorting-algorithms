@@ -1,5 +1,5 @@
 // Selection sort
-// Selection sort works by dividing the array into sorted (left) and unsorted (right) subarrays.
+// Works by dividing the array into sorted (left) and unsorted (right) subarrays.
 // It looks through the entire unsorted subarray and finds the lowest value.
 // It takes this lowest value and inserts it at the end of the sorted subarray.
 
@@ -47,6 +47,28 @@ function bubbleSort(array) {
     }
     // Repeat process until the swapped boolean is false
   } while (swapped);
+  // Return the array
+  return array;
+}
+
+// Insertion sort
+// Works by dividing the array into sorted (left) and unsorted (right) subarrays.
+// Takes the first element of the unsorted subarray, then steps through the sorted array to find where that element should exist.
+// Then splices that element in to that position.
+
+function insertionSort(array) {
+  // Iterate over the length of the array, starting at the second element (the first element of the unsorted subarray).
+  for (var i = 1; i < array.length; i++) {
+    // Iterate over the sorted subarray
+    for (var j = 0; j < i; j++) {
+      // When find an element in the sorted subarray that is greater than the element you're comparing from the unsorted subarray, insert the element to the left of it.
+      if (array[i] < array[j]) {
+        var temp = array.splice(i, 1);
+        array.splice(j, 0, temp[0]);
+      }
+      // If no elements are found that are greater than the comparison element, do nothing, leaving the comparison element at the end of the sorted subarray.
+    }
+  }
   // Return the array
   return array;
 }
