@@ -26,20 +26,27 @@ function selectionSort(array) {
 }
 
 // Bubble sort
+// Works by stepping through the whole array, comparing two elements and swapping them if they are in the wrong order.
+// This process repeats, passing over the whole array, until a pass completes where no swaps occurred, indicating the array is sorted.
 
 function bubbleSort(array) {
   do {
+    // Declare a boolean to hold whether or not a swap has occurred on a pass
     var swapped = false;
-    for (var i = array.length - 1; i >= 0; i--) {
-      for (var j = 1; j <= i; j++) {
-        if (array[j - 1] > array[j]) {
-          var temp = array[j - 1];
-          array[j - 1] = array[j];
-          array[j] = temp;
-          swapped = true;
-        }
+    // Loop over the entire array length.
+    for (var i = 0; i < array.length; i++) {
+      // Check if the current pair are out of order
+      if (array[i - 1] > array[i]) {
+        // Swap the pair
+        var temp = array[i - 1];
+        array[i - 1] = array[i];
+        array[i] = temp;
+        // Set the boolean to indicate a swap has occurred.
+        swapped = true;
       }
     }
+    // Repeat process until the swapped boolean is false
   } while (swapped);
+  // Return the array
   return array;
 }
