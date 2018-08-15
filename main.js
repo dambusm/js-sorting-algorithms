@@ -72,3 +72,42 @@ function insertionSort(array) {
   // Return the array
   return array;
 }
+
+// Merge sort
+
+// on input of n elements
+//    if n < 2
+//        return
+//    else
+//        sort left half of elements
+//        sort right half of elements
+//        merge
+
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+  var midPoint = Math.ceil(array.length / 2);
+  var leftArray = array.slice(0, midPoint);
+  var rightArray = array.slice(midPoint, array.length);
+  return merge(leftArray, rightArray);
+
+  console.log(leftArray, rightArray);
+}
+
+function merge(left, right) {
+  // Iterate over the length of the right array
+  for (var i = 0; i < right.length; i++) {
+    // Iterate over the sorted subarray (left array)
+    for (var j = 0; j < left.length; j++) {
+      // When find an element in the sorted subarray that is greater than the element you're comparing from the unsorted subarray, insert the element to the left of it.
+      if (right[i] < left[j]) {
+        var temp = right.splice(i, 1);
+        left.splice(j, 0, temp[0]);
+      }
+      // If no elements are found that are greater than the comparison element, do nothing, leaving the comparison element at the end of the sorted subarray.
+    }
+  }
+  // Return the array
+  return left;
+}
